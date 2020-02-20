@@ -207,12 +207,177 @@ ul.social-network li {
   border-radius: 10px;
 }
 
+.modal-md-35-sm-90 .el-dialog {
+  width: 35%;
+  border-radius: 10px;
+}
+
 .el-loading-mask {
   opacity: 0.8;
 }
 
 .el-dialog__title {
   font-size: 24px;
+}
+
+@media (max-width: 480px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 90%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 576px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 90%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 90%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 45%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 867px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 90%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 868px) and (max-width: 968px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 75%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 969px) and (max-width: 1000px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 68%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1050px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 66%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1050px) and (max-width: 1100px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 65%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1101px) and (max-width: 1150px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 60%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1150px) and (max-width: 1200px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 56%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 55%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1301px) and (max-width: 1400px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 55%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 86%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1401px) and (max-width: 1600px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 55%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1601px) and (max-width: 1700px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1701px) and (max-width: 1800px) {
+  .modal-md-35-sm-90 .el-dialog {
+    width: 39%;
+  }
+
+  .demo-ruleForm + .el-transfer {
+    width: 94%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -222,10 +387,6 @@ ul.social-network li {
 
   .modal-with-create .el-dialog {
     width: 100%;
-  }
-
-  .modal-md-25-sm-90 .el-dialog {
-    width: 90%;
   }
 }
 

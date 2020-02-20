@@ -17,7 +17,7 @@
     </div>
     <table-admin
       :title="`Subjects List`"
-      :listAll="subjectsOfCourse"
+      :listAll="subjectsOfCourse ? subjectsOfCourse : []"
       :loadingData="loadingData"
       :btnInfo="true"
       :nameFunctionInfo="`showInfoSubject`"
@@ -49,26 +49,34 @@
     <el-dialog
       title="Add Subject To Course"
       :visible.sync="dialogForm.addSubject"
-      class="modal-md-25-sm-90"
+      class="modal-md-35-sm-90"
     >
       <el-form :model="formAdd" :rules="ruleAdd" ref="formAdd" class="demo-ruleForm">
-        <el-form-item prop="subjectId">
-          <el-select v-model="formAdd.subjectId" placeholder="Subject">
-            <el-option
-              :label="subject.SubjectName"
-              :value="subject.SubjectID"
-              v-for="(subject, index) in subjectsNoCourse"
-              :key="index"
-            ></el-option>
-          </el-select>
-        </el-form-item>
+        <!-- <el-form-item prop="subjectId">
+        <el-select v-model="formAdd.subjectId" placeholder="Subject">
+          <el-option
+            :label="subject.SubjectName"
+            :value="subject.SubjectID"
+            v-for="(subject, index) in subjectsNoCourse"
+            :key="index"
+          ></el-option>
+        </el-select>
+      </el-form-item> -->
       </el-form>
+      <el-transfer
+        filterable
+        :filter-method="filterMethod"
+        filter-placeholder="search"
+        v-model="value"
+        :data="data"
+        :titles="['Not added', 'Added']"
+      >
+      </el-transfer>
       <span slot="footer" class="dialog-footer">
         <el-button @click="resetAddSubject('formAdd')">Cancel</el-button>
         <el-button type="primary" @click="handleAddSubject('formAdd')">Add</el-button>
       </span>
     </el-dialog>
-
 
     <el-dialog
       title="Information Subject"
@@ -90,7 +98,7 @@
             >Subject Code</label
           >
           <div class="col-sm-12">
-            <h4  class="pl-3">{{ infoSubject.subjectCode }}</h4>
+            <h4 class="pl-3">{{ infoSubject.subjectCode }}</h4>
           </div>
         </div>
         <div class="form-group">
@@ -122,7 +130,17 @@
 import { mapState, mapActions } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import TableAdmin from '@/components/admin-academy/TableAdmin';
-import { Button, Select, Option, Dialog, Form, FormItem, Message, MessageBox } from 'element-ui';
+import {
+  Button,
+  Select,
+  Option,
+  Dialog,
+  Form,
+  FormItem,
+  Message,
+  MessageBox,
+  Transfer
+} from 'element-ui';
 export default {
   components: {
     ValidationObserver,
@@ -133,10 +151,38 @@ export default {
     'el-option': Option,
     'el-dialog': Dialog,
     'el-form': Form,
-    'el-form-item': FormItem
+    'el-form-item': FormItem,
+    'el-transfer': Transfer
   },
   data() {
+    const generateData = (_) => {
+      const data = [];
+      const states = [
+        'California',
+        'Illinois',
+        'Maryland',
+        'Texas',
+        'Florida',
+        'Colorado',
+        'Connecticut '
+      ];
+      const initials = ['CA', 'IL', 'MD', 'TX', 'FL', 'CO', 'CT'];
+      states.forEach((city, index) => {
+        data.push({
+          label: city,
+          key: index,
+          initial: initials[index]
+        });
+      });
+      return data;
+    };
+
     return {
+      data: generateData(),
+      value: [],
+      filterMethod(query, item) {
+        return item.initial.toLowerCase().indexOf(query.toLowerCase()) > -1;
+      },
       items: [
         {
           text: 'Course',
@@ -265,7 +311,7 @@ export default {
       this.infoSubject.description = row.Description;
       this.dialogForm.infoSubject = true;
     },
-     resetForm(formName) {
+    resetForm(formName) {
       this[formName].subjectId = '';
       this[formName].subjectName = '';
       this[formName].subjectCode = '';
@@ -273,7 +319,7 @@ export default {
       this[formName].description = '';
       this.$refs[formName].resetFields();
       this.dialogForm[formName] = false;
-    },
+    }
   },
   computed: {
     ...mapState('adminAcademy', ['subjectsOfCourse', 'listCourses'])
